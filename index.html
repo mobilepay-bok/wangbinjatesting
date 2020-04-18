@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title> 왕빈자 </title>
+	
+	<style>
+		#div_container{
+		}
+		#div_root{
+			border-bottom: thin solid #BEBEBE;
+			padding: 5px;
+			margin: auto;
+			background-color: white;
+			overflow: hidden;
+			<!-- position:relative; -->
+		}
+		.div_menu{
+			width: 70%;
+			float: left;
+			<!-- padding-left: 5px; -->
+			background-color: white;
+			text-align: left;
+		}
+		#div_price_quantity{
+			margin: auto;
+			float: left;
+			width: 30%;
+			background-color: white;
+		}
+		#div_price{
+			margin: auto;
+			float: top;
+			background-color: white;
+			text-align: right;
+		}
+		#div_quantity{
+			border: thin solid black;
+			margin: auto;
+			padding: 0px;
+			float: right;
+			background-color: white;
+			height: 30px;
+			width: auto;
+		}
+		#div_category_container{
+		}
+		.div_category{
+			background-color: #F0F0F0;
+			border-bottom: thin solid #BEBEBE;
+			<!-- height: auto; -->
+			width: auto;
+			padding-left: 10px;
+		}
+		#btn_minus{
+			width: 20px;
+			height: 30px;
+			background-color: Transparent;
+			border-style: none;
+			border-right: thin solid black;
+			text-align:center;
+			padding: 0;
+			margin: 0;
+			float: left;
+		}
+		#btn_num{
+			width: 40px;
+			height: 30px;
+			background-color: Transparent;
+			border-style: none;
+			pointer-events: none;
+		}
+		#btn_plus{
+			width: 20px;
+			height: 30px;
+			background-color: Transparent;
+			border-style: none;
+			border-left: thin solid black;
+			text-align: center;
+			padding: 0;
+			margin: 0;
+			float: right;
+		}
+		#div_subquantity{
+			border: thin solid black;
+			margin: auto;
+			padding: 0px;
+			float: right;
+			background-color: white;
+			height: 30px;
+			width: auto;
+		}
+		#btn_subminus{
+			width: 20px;
+			height: 30px;
+			background-color: Transparent;
+			border-style: none;
+			border-right: thin solid black;
+			text-align:center;
+			padding: 0;
+			margin: 0;
+			float: left;
+		}
+		#btn_subnum{
+			width: 30px;
+			height: 30px;
+			background-color: Transparent;
+			border-style: none;
+			pointer-events: none;
+		}
+		.btn_subplus{
+			width: 20px;
+			height: 30px;
+			background-color: Transparent;
+			border-style: none;
+			border-left: thin solid black;
+			text-align: center;
+			padding: 0;
+			margin: 0;
+			float: right;
+		}
+
+	</style>
+
+</head>
+
+
+
+<body>
+<span style="font-weight:bold;">1번 테이블</span>
+
+	<!-- <br> -->
+	<!-- <img src='https://lh3.googleusercontent.com/5Pfothnh21Xsog37QyS2pxp6vf47YzTPu9d9eK-iPOSY5X3JqkfCZtUW8GVkS9eDFxBYeUf1Huzyf670hb0qAPyrfZoCUqL_jpqMvIX4EeZu-Al4dluoeSCLTfZSyunjmoCpbNra=w2400' alt="밥파스타 메뉴 사진" -->
+		<!-- style="height:auto; width:100%;"	 -->
+	<!-- /> -->
+	<br>
+	<!-- <span>** 추가 주문시 페이지를 새로고침 해주세요 **</span> -->
+
+<p></p>
+<div id="container">
+	<div id="div_category_container">
+		<div id="div_anju" style = "font-size:larger; font-weight: bold; padding-bottom:5px">
+		안주
+		</div>
+		<div id="div_category1" class="div_category" num = 1 value = 0 title = "세트메뉴 &#x25BC">
+		세트메뉴 &#x25BC
+		<p>
+		</p>
+		</div>
+		<div id="div_non_category1"></div>
+		
+		<div id="div_category2" class="div_category" num = 2 value = 0 title = "겨울메뉴 &#x25BC">
+		겨울메뉴 &#x25BC
+		<p>
+		</p>
+		</div>
+		<div id="div_non_category2"></div>
+		
+		<div id="div_category3" class="div_category" num = 3 value = 0 title = "대표메뉴 &#x25BC">
+		대표메뉴 &#x25BC
+		<p>
+		</p>
+		</div>
+		<div id="div_non_category3"></div>
+		
+		<div id="div_category4" class="div_category" num = 4 value = 0 title = "기본에 충실한 전요리 &#x25BC">
+		기본에 충실한 전요리 &#x25BC
+		<p>
+		</p>
+		</div>
+		<div id="div_non_category4"></div>
+		
+		<div id="div_category5" class="div_category" num = 5 value = 0 title = "치즈덕후를 위한 100%자연치즈 듬뿍 &#x25BC">
+		치즈덕후를 위한 100% 자연치즈 듬뿍 &#x25BC
+		<p>
+		</p>
+		</div>
+		<div id="div_non_category5"></div>
+		
+		<div id="div_category6" class="div_category" num = 6 value = 0 title = "따뜻한 국물요리 &#x25BC">
+		따뜻한 국물요리 &#x25BC
+		<p>
+		</p>
+		</div>
+		<div id="div_non_category6"></div>
+		
+		<div id="div_category7" class="div_category" num = 7 value = 0 title = "입가심 메뉴 &#x25BC">
+		입가심 메뉴&#x25BC
+		<p>
+		</p>
+		</div>
+		<div id="div_non_category7"></div>
+		
+		<div id="div_category8" class="div_category" num = 8 value = 0 title = "추가메뉴 (다른메뉴와 함께 주문해주세요) &#x25BC">
+		추가메뉴 (다른메뉴와 함께 주문해주세요) &#x25BC
+		<p>
+		</p>
+		</div>
+		<div id="div_non_category8"></div>
+
+		<p>
+		</p>
+		<div id="div_drinks" style = "font-size:larger; font-weight: bold; padding-bottom:5px">
+		술
+		</div>
+				
+		<div id="div_category9" class="div_category" num = 9 value = 0 title = "">
+		산뜻하고 가벼운 쌀 막걸리, 그리고 동동주 &#x25BC
+		<p>
+		</p>
+		</div>
+		<div id="div_non_category9"></div>
+						
+		<div id="div_category10" class="div_category" num = 10 value = 0 title = "">
+		자연의 맛을 내려는 사람들의 이야기 無감미료 &#x25BC
+		<p>
+		</p>
+		</div>
+		<div id="div_non_category10"></div>
+		
+		<div id="div_category11" class="div_category" num = 11 value = 0 title = "">
+		고향 자랑 대표 막걸리 &#x25BC
+		<p>
+		</p>
+		</div>
+		<div id="div_non_category11"></div>
+		
+		<div id="div_category12" class="div_category" num = 12 value = 0 title = "">
+		입안에서 톡톡, 샴페인 막걸리 (세트메뉴 이용가능) &#x25BC
+		<p>
+		</p>
+		</div>
+		<div id="div_non_category12"></div>
+		
+		<div id="div_category13" class="div_category" num = 13 value = 0 title = "">
+		지극정성 프리미엄 수제 탁주 無감미료 (세트메뉴 이용가능) &#x25BC
+		<p>
+		</p>
+		</div>
+		<div id="div_non_category13"></div>
+		
+		<div id="div_category14" class="div_category" num = 14 value = 0 title = "">
+		맑은 목넘김의 막걸리 &#x25BC
+		<p>
+		</p>
+		</div>
+		<div id="div_non_category14"></div>
+		
+		<div id="div_category15" class="div_category" num = 15 value = 0 title = "">
+		걸쭉하고 진한 옛막걸리 &#x25BC
+		<p>
+		</p>
+		</div>
+		<div id="div_non_category15"></div>	
+	
+		<div id="div_category16" class="div_category" num = 16 value = 0 title = "">
+		단게 땡긴다 달달하게 - 술자리가 무르익을 때 &#x25BC
+		<p>
+		</p>
+		</div>
+		<div id="div_non_category16"></div>
+		
+		<div id="div_category17" class="div_category" num = 17 value = 0 title = "">
+		한국 과실주 &#x25BC
+		<p>
+		</p>
+		</div>
+		<div id="div_non_category17"></div>
+		
+		<div id="div_category18" class="div_category" num = 18 value = 0 title = "">
+		한국 맑은 술 &#x25BC
+		<p>
+		</p>
+		</div>
+		<div id="div_non_category18"></div>
+		
+		<div id="div_category19" class="div_category" num = 19 value = 0 title = "">
+		한국증류소주 &#x25BC
+		<p>
+		</p>
+		</div>
+		<div id="div_non_category19"></div>
+		
+		<div id="div_category20" class="div_category" num = 20 value = 0 title = "">
+		조선시대 3대명주 특집 (선물용 문의) &#x25BC
+		<p>
+		</p>
+		</div>
+		<div id="div_non_category20"></div>
+		
+		<div id="div_category21" class="div_category" num = 21 value = 0 title = "">
+		한국와인 &#x25BC
+		<p>
+		</p>
+		</div>
+		<div id="div_non_category21"></div>
+	</div>
+
+	<p></p>
+	<!-- <div style="border-bottom: thin solid #BEBEBE"> </div> -->
+
+
+	<div id="orders" style="border-top:thick solid #BEBEBE; border-bottom: thick solid #BEBEBE; padding:5px">
+	</div>
+	<p></p>
+
+	<span style="font-weight:bold"> 요청 사항 <input type="text", id="extraField" style="width:100%"> </input> </span>
+	
+<br><br>
+<button id="order-btn"
+		style = "display: block;
+		  width: 100%;
+		  height: 35px;
+		  margin-left: 0;
+		  margin-right: auto;
+		  background: rgba(26,125,112,1);
+		  font-size:93%;
+	      font-family:sans-serif;
+	      color: white;
+		  "
+>주문 및 결제</button>
+</div>
+</body>
+
+<script>
+	$('.div_category').click(function(){
+		flag = $(this).attr("value");
+		num = $(this).attr("num");
+		if (flag == 0) {
+			switch (num) {
+				case '1':
+					goods.drawGoods(goods.arrAllGoods, $('#div_non_category'+num), 0, 5);
+					break;
+				case '2':
+					goods.drawGoods(goods.arrAllGoods, $('#div_non_category'+num), 6, 9);
+					break;
+				case '3':
+					goods.drawGoods(goods.arrAllGoods, $('#div_non_category'+num), 10, 13);
+					break;
+				case '4':
+					goods.drawGoods(goods.arrAllGoods, $('#div_non_category'+num), 14, 18);
+					break;
+				case '5':
+					goods.drawGoods(goods.arrAllGoods, $('#div_non_category'+num), 19, 22);
+					break;
+				case '6':
+					goods.drawGoods(goods.arrAllGoods, $('#div_non_category'+num), 23, 25);
+					break;
+				case '7':
+					goods.drawGoods(goods.arrAllGoods, $('#div_non_category'+num), 26, 30);
+					break;
+				case '8':
+					goods.drawGoods(goods.arrAllGoods, $('#div_non_category'+num), 31, 37);
+					break;
+				case '9':
+					goods.drawGoods(goods.arrAllGoods, $('#div_non_category'+num), 38, 47);
+					break;
+				case '10':
+					goods.drawGoods(goods.arrAllGoods, $('#div_non_category'+num), 48, 58);
+					break;
+				case '11':
+					goods.drawGoods(goods.arrAllGoods, $('#div_non_category'+num), 59, 66);
+					break;
+				case '12':
+					goods.drawGoods(goods.arrAllGoods, $('#div_non_category'+num), 67, 69);
+					break;
+				case '13':
+					goods.drawGoods(goods.arrAllGoods, $('#div_non_category'+num), 70, 73);
+					break;
+				case '14':
+					goods.drawGoods(goods.arrAllGoods, $('#div_non_category'+num), 74, 76);
+					break;
+				case '15':
+					goods.drawGoods(goods.arrAllGoods, $('#div_non_category'+num), 77, 80);
+					break;
+				case '16':
+					goods.drawGoods(goods.arrAllGoods, $('#div_non_category'+num), 81, 90);
+					break;
+				case '17':
+					goods.drawGoods(goods.arrAllGoods, $('#div_non_category'+num), 91, 98);
+					break;
+				case '18':
+					goods.drawGoods(goods.arrAllGoods, $('#div_non_category'+num), 99, 110);
+					break;
+				case '19':
+					goods.drawGoods(goods.arrAllGoods, $('#div_non_category'+num), 111, 135);
+					break;
+				case '20':
+					goods.drawGoods(goods.arrAllGoods, $('#div_non_category'+num), 136, 138);
+					break;
+				case '21':
+					goods.drawGoods(goods.arrAllGoods, $('#div_non_category'+num), 139, 143);
+					break;
+				default:
+					break;
+			}
+
+			$(this).attr("value", 1);
+		}
+		else {
+			$('#div_non_category'+num).html('');
+			$('#'+this.id).attr("value", 0);
+		}
+		
+	});
+
+	function draw_sub_menu(start, end, submenu_count){
+		var innerHtml = "";
+		for (var i = start; i<=end; i++) {	
+			innerHtml += '<div id="div_menu" style="float: left; width:70%; font-size: smaller; word-break:keep-all">'
+			innerHtml += '<span id="input_name_'+goods.arrAllGoods[i].goodsId+'">' + goods.arrAllGoods[i].goodsNmForSub + '</span>';
+			if (goods.arrAllGoods[i].goodsSubname)
+				innerHtml += '<br> <span id="input_subname_'+goods.arrAllGoods[i].goodsId+'"' + 'style="font-size:80%; color:grey; word-break:keep-all">' + goods.arrAllGoods[i].goodsSubname + '</span>';
+			if (goods.arrAllGoods[i].goodsSubname2)
+				innerHtml += '<br> <span id="input_subname2_'+goods.arrAllGoods[i].goodsId+'"' + 'style="font-size:80%; color:grey; word-break:keep-all">' + goods.arrAllGoods[i].goodsSubname2 + '</span>';
+			innerHtml += '</div>';
+			innerHtml += '<div id="div_price_quantity_sub" style="float:left; width:30%;">';
+				innerHtml += '<div id="div_subquantity">';
+				innerHtml += '<button id="btn_subminus" onclick="goods.subminus(\''+goods.arrAllGoods[i].goodsId+'\');"> - </button>';
+				innerHtml += '<button id="btn_subnum">';
+
+				innerHtml += '<span id="input_cnt_'+goods.arrAllGoods[i].goodsId+'">' + goods.arrAllGoods[i].cnt + '</span>';
+				innerHtml += '</button>';
+				innerHtml += '<button class="btn_subplus" id="btn_subplus_'+i+'" onclick="goods.subplus(\''+goods.arrAllGoods[i].goodsId+'\');"> + </button>';
+				//세트 + 막는 코드 : innerHtml += '<button class="btn_subplus" id="btn_subplus_'+i+'" onclick="goods.subplus(\''+goods.arrAllGoods[i].goodsId+'\','+submenu_count+');"> + </button>';
+
+				innerHtml += '</div>';
+			innerHtml += '</div>';
+		}
+		return innerHtml;
+	}
+
+	var style_with_padding = "clear: both; padding:10px; float:left; width: 90%; background-color:#F0F0F0";
+	var style_no_padding = "clear: both; float:left; width: 90%; background-color:#F0F0F0"
+
+	function draw_sub_menu_0() {
+		flag = $('#sub_menu_root_0').attr("value");
+		if (flag == 0) {
+			var innerHtml = "";
+			innerHtml += '<span style="float:left; width:100%; margin-left: -8px"> 샴페인 막걸리, 프리미엄 막걸리 (선택1) : </span>';
+			innerHtml += draw_sub_menu(145, 151, goods.arrAllGoods[0].cnt);
+			//innerHtml += '<span style="float:left; width:100%;  margin-left: -8px; border-top:thin solid black"> 프리미엄 막걸리 : </span>';
+			//innerHtml += draw_sub_menu(148, 151, goods.arrAllGoods[0].cnt);
+			innerHtml += '<span style="float:left; width:100%;  margin-left: -8px; border-top:thin solid black"> 전 (선택 1) : </span>';
+			innerHtml += draw_sub_menu(152, 153, goods.arrAllGoods[0].cnt);
+			
+			$('#sub_menu_root_0').attr("value", 1);
+			$('#sub_menu_root_0').attr("style", style_with_padding);
+		}
+		else {
+			$('#sub_menu_root_0').html('');
+			$('#sub_menu_root_0').attr("value", 0);
+			$('#sub_menu_root_0').attr("style", style_no_padding);
+		}
+		$('#sub_menu_root_0').append(innerHtml);	
+	}
+	function draw_sub_menu_2() {
+		flag = $('#sub_menu_root_2').attr("value");
+		if (flag == 0) {
+			var innerHtml = "";
+			innerHtml += '<span style="float:left; width:100%; margin-left: -8px"> 치즈전 (선택 1): </span>';
+			innerHtml += draw_sub_menu(154, 157, goods.arrAllGoods[2].cnt);
+			innerHtml += '<span style="float:left; width:100%;  margin-left: -8px; margin-top:5px; border-top:thin solid black"> 볶음류 (선택 1): </span>';
+			innerHtml += draw_sub_menu(158, 160, goods.arrAllGoods[2].cnt);
+			
+			$('#sub_menu_root_2').attr("value", 1);
+			$('#sub_menu_root_2').attr("style", style_with_padding);
+		}
+		else {
+			$('#sub_menu_root_2').html('');
+			$('#sub_menu_root_2').attr("value", 0);
+			$('#sub_menu_root_2').attr("style", style_no_padding);
+		}
+		$('#sub_menu_root_2').append(innerHtml);
+	}
+	function draw_sub_menu_3() {
+		flag = $('#sub_menu_root_3').attr("value");
+		if (flag == 0) {
+			var innerHtml = "";
+			innerHtml += '<span style="float:left; width:100%; margin-left: -8px"> 치즈전 (선택 1) : </span>';
+			innerHtml += draw_sub_menu(161, 165, goods.arrAllGoods[3].cnt);
+			
+			$('#sub_menu_root_3').attr("value", 1);
+			$('#sub_menu_root_3').attr("style", style_with_padding);
+		}
+		else {
+			$('#sub_menu_root_3').html('');
+			$('#sub_menu_root_3').attr("value", 0);
+			$('#sub_menu_root_3').attr("style", style_no_padding);
+		}
+		$('#sub_menu_root_3').append(innerHtml);
+	}
+	function draw_sub_menu_4() {
+		flag = $('#sub_menu_root_4').attr("value");
+		if (flag == 0) {
+			var innerHtml = "";
+			innerHtml += '<span style="float:left; width:100%; margin-left: -8px"> 두가지전 (선택 2) : </span>';
+			innerHtml += draw_sub_menu(166, 175, goods.arrAllGoods[4].cnt);
+			
+			$('#sub_menu_root_4').attr("value", 1);
+			$('#sub_menu_root_4').attr("style", style_with_padding);
+		}
+		else {
+			$('#sub_menu_root_4').html('');
+			$('#sub_menu_root_4').attr("value", 0);
+			$('#sub_menu_root_4').attr("style", style_no_padding);
+		}
+		$('#sub_menu_root_4').append(innerHtml);
+	}
+	function draw_sub_menu_5() {
+		flag = $('#sub_menu_root_5').attr("value");
+		if (flag == 0) {
+			var innerHtml = "";
+			innerHtml += '<span style="float:left; width:100%; margin-left: -8px"> 세가지전 (선택 3) : </span>';
+			innerHtml += draw_sub_menu(176, 185, goods.arrAllGoods[5].cnt);
+			
+			$('#sub_menu_root_5').attr("value", 1);
+			$('#sub_menu_root_5').attr("style", style_with_padding);
+		}
+		else {
+			$('#sub_menu_root_5').html('');
+			$('#sub_menu_root_5').attr("value", 0);
+			$('#sub_menu_root_5').attr("style", style_no_padding);
+		}
+		$('#sub_menu_root_5').append(innerHtml);
+	}
+	
+	$('#div_non_category1').click(function(event) {
+		if (event.target.id === 'input_name_0' || event.target.id === 'input_subname_0' || event.target.id === 'input_subname2_0' || event.target.id === 'div_menu_0') {
+			draw_sub_menu_0();
+		}
+		else if (event.target.id === 'input_name_2' || event.target.id === 'input_subname_2' || event.target.id === 'input_subname2_2' || event.target.id === 'div_menu_2') {
+			draw_sub_menu_2();
+		}
+		else if (event.target.id === 'input_name_3' || event.target.id === 'input_subname_3' || event.target.id === 'input_subname2_3' || event.target.id === 'div_menu_3') {
+			draw_sub_menu_3();
+		}
+		else if (event.target.id === 'input_name_4' || event.target.id === 'input_subname_4' || event.target.id === 'input_subname2_4' || event.target.id === 'div_menu_4') {
+			draw_sub_menu_4();
+		}
+		else if (event.target.id === 'input_name_5' || event.target.id === 'input_subname_5' || event.target.id === 'input_subname2_5' || event.target.id === 'div_menu_5') {
+			draw_sub_menu_5();
+		}
+	});
+	
+	function Goods(){
+		var tableNum = 1;
+		var p = this;
+		this.arrAllGoods = new Array();
+
+		this.drawItem = function(goods, start, end) {
+			var innerHtml = "";
+			for (var i = start; i <= end; i++) {					
+				innerHtml += '<div id="div_root">';
+				innerHtml += '<div id="top">';
+					innerHtml += '<div id="div_menu_'+i+'" class="div_menu" style="word-break:keep-all">'
+						if (i==0 || i==2 || i==3 || i==4 || i==5) {
+							innerHtml += '<span id="input_name_'+goods[i].goodsId+'">' + goods[i].goodsNm + '&#x25BC </span>';
+						}
+						else
+							innerHtml += '<span id="input_name_'+goods[i].goodsId+'">' + goods[i].goodsNm + '</span>';
+						if (goods[i].goodsSubname)
+							innerHtml += '<br> <span id="input_subname_'+goods[i].goodsId+'"' + 'style="font-size:80%; color:grey; word-break:keep-all">' + goods[i].goodsSubname + '</span>';
+						if (goods[i].goodsSubname2)
+							innerHtml += '<br> <span id="input_subname2_'+goods[i].goodsId+'"' + 'style="font-size:80%; color:grey; word-break:keep-all">' + goods[i].goodsSubname2 + '</span>';
+					innerHtml += '</div>';
+					innerHtml += '<div id="div_price_quantity">';
+						innerHtml += '<div id="div_price">';
+						innerHtml += '<span id="input_price_'+goods[i].goodsId+'">' + goods[i].goodsUnprc + '원</span>';
+						innerHtml += '</div>';
+						innerHtml += '<div id="div_quantity">';
+						innerHtml += '<button id="btn_minus" onclick="goods.minus(\''+goods[i].goodsId+'\');"> - </button>';
+						innerHtml += '<button id="btn_num">';
+
+						//innerHtml += '<button id="btn_num">' + '<span id="input_cnt_'+goods[i].goodsId+'">' + goods[i].cnt + '</span> </button>';
+						innerHtml += '<span id="input_cnt_'+goods[i].goodsId+'">' + goods[i].cnt + '</span>';
+						innerHtml += '</button>';
+						innerHtml += '<button id="btn_plus" onclick=" goods.plus(\''+goods[i].goodsId+'\');"> + </button>';
+						innerHtml += '</div>';
+					innerHtml += '</div>';
+					
+				innerHtml += '</div>';
+				innerHtml += '<div id="sub_menu_root_'+i+'" value=0 style="clear: both; float:left; width: 80%; background-color:#F0F0F0"> </div>';
+				innerHtml += '</div>';
+			}
+			return innerHtml;
+		}
+		
+		this.drawGoods = function(goods, category, start, end) {
+			var innerHtml = "";
+			//innerHtml += 
+			innerHtml += this.drawItem(goods, start, end);
+			$(category).append(innerHtml);
+		}
+		
+		this.plus = function (trgtGoodsId){
+			for(var i=0;i<p.arrAllGoods.length;i++){
+				if(p.arrAllGoods[i].goodsId==trgtGoodsId){
+					p.arrAllGoods[i].cnt++;
+					break;
+				}
+			}
+			
+			if (trgtGoodsId == 0 && $('#sub_menu_root_0').attr("value") == 0) {
+				draw_sub_menu_0();
+			} else if (trgtGoodsId == 2 && $('#sub_menu_root_2').attr("value") == 0) {
+				draw_sub_menu_2();
+			} else if (trgtGoodsId == 3 && $('#sub_menu_root_3').attr("value") == 0) {
+				draw_sub_menu_3();
+			} else if (trgtGoodsId == 4 && $('#sub_menu_root_4').attr("value") == 0) {
+				draw_sub_menu_4();
+			} else if (trgtGoodsId == 5 && $('#sub_menu_root_5').attr("value") == 0) {
+				draw_sub_menu_5();
+			}
+			
+			p.afterProc();			
+		}
+		
+		this.minus = function (trgtGoodsId){
+			for(var i=0;i<p.arrAllGoods.length;i++){
+				if(p.arrAllGoods[i].goodsId==trgtGoodsId){
+					if(p.arrAllGoods[i].cnt==0) break;
+					p.arrAllGoods[i].cnt--;
+					break;
+				}
+			}
+			// 세트 메뉴 빼면 아예 초기화 시킨다.
+			if (trgtGoodsId == 0) {
+				for(var i=0;i<p.arrAllGoods.length;i++){
+					if (p.arrAllGoods[i].setName == "set1")
+						p.arrAllGoods[i].cnt = 0;
+				}
+			} else if (trgtGoodsId == 2) {
+				for(var i=0;i<p.arrAllGoods.length;i++){
+					if (p.arrAllGoods[i].setName == "set3")
+						p.arrAllGoods[i].cnt = 0;
+				}
+			} else if (trgtGoodsId == 3) {
+				for(var i=0;i<p.arrAllGoods.length;i++){
+					if (p.arrAllGoods[i].setName == "set4")
+						p.arrAllGoods[i].cnt = 0;
+				}
+			} else if (trgtGoodsId == 4) {
+				for(var i=0;i<p.arrAllGoods.length;i++){
+					if (p.arrAllGoods[i].setName == "set5")
+						p.arrAllGoods[i].cnt = 0;
+				}
+			} else if (trgtGoodsId == 5) {
+				for(var i=0;i<p.arrAllGoods.length;i++){
+					if (p.arrAllGoods[i].setName == "set6")
+						p.arrAllGoods[i].cnt = 0;
+				}
+			}
+			
+			p.afterProc();
+		}
+		
+		this.subplus = function (trgtGoodsId){
+			raiseCnt = false;
+			if (p.arrAllGoods[trgtGoodsId].setName == "set1") {
+				total=p.arrAllGoods[0].cnt;
+				subtotal1 = 0;
+				subtotal2 = 0;
+				for(var i=0; i<p.arrAllGoods.length; i++) {
+					if (p.arrAllGoods[i].setName == "set1") {
+						if (p.arrAllGoods[i].goodsNm == "모짜렐라김치전M (세트 1)" || p.arrAllGoods[i].goodsNm == "체다듬뿍감자전M (세트 1)") {
+							subtotal2 += p.arrAllGoods[i].cnt;
+						}
+						else {
+							subtotal1 += p.arrAllGoods[i].cnt;
+						}
+					} 
+				}
+				if (p.arrAllGoods[trgtGoodsId].goodsNm == "모짜렐라김치전M (세트 1)" || p.arrAllGoods[trgtGoodsId].goodsNm == "체다듬뿍감자전M (세트 1)") {
+					if (subtotal2 < total) {
+						raiseCnt = true;
+					}
+				} else {
+					if (subtotal1 < total)
+						raiseCnt = true;
+				}
+				
+			} else if (p.arrAllGoods[trgtGoodsId].setName == "set3") {
+				total=p.arrAllGoods[2].cnt;
+				subtotal1 = 0;
+				subtotal2 = 0;
+				for(var i=0; i<p.arrAllGoods.length; i++) {
+					if (p.arrAllGoods[i].setName == "set3") {
+						if (p.arrAllGoods[i].goodsNm == "쫄깃한 무뼈닭발볶음 (세트 3)" || p.arrAllGoods[i].goodsNm == "오독오독 오돌뼈볶음 (세트 3)" || p.arrAllGoods[i].goodsNm == "고추장불고기 (세트 3)") {
+							subtotal2 += p.arrAllGoods[i].cnt;
+						}
+						else {
+							subtotal1 += p.arrAllGoods[i].cnt;
+						}
+					} 
+				}
+				if (p.arrAllGoods[trgtGoodsId].goodsNm == "쫄깃한 무뼈닭발볶음 (세트 3)" || p.arrAllGoods[trgtGoodsId].goodsNm == "오독오독 오돌뼈볶음 (세트 3)" || p.arrAllGoods[trgtGoodsId].goodsNm == "고추장불고기 (세트 3)") {
+					if (subtotal2 < total) {
+						raiseCnt = true;
+					}
+				} else {
+					if (subtotal1 < total)
+						raiseCnt = true;
+				}
+			} else if (p.arrAllGoods[trgtGoodsId].setName == "set4") {
+				total=p.arrAllGoods[3].cnt;
+				subtotal1 = 0;
+				for(var i=0; i<p.arrAllGoods.length; i++) {
+					if (p.arrAllGoods[i].setName == "set4") {
+						subtotal1 += p.arrAllGoods[i].cnt;
+					} 
+				}
+				if (subtotal1 < total)
+					raiseCnt = true;
+			} else if (p.arrAllGoods[trgtGoodsId].setName == "set5") {
+				total=p.arrAllGoods[4].cnt;
+				subtotal1 = 0;
+				for(var i=0; i<p.arrAllGoods.length; i++) {
+					if (p.arrAllGoods[i].setName == "set5") {
+						subtotal1 += p.arrAllGoods[i].cnt;
+					} 
+				}
+				if (subtotal1 < total*2)
+					raiseCnt = true;
+			} else if (p.arrAllGoods[trgtGoodsId].setName == "set6") {
+				total=p.arrAllGoods[5].cnt;
+				subtotal1 = 0;
+				for(var i=0; i<p.arrAllGoods.length; i++) {
+					if (p.arrAllGoods[i].setName == "set6") {
+						subtotal1 += p.arrAllGoods[i].cnt;
+					} 
+				}
+				if (subtotal1 < total*3)
+					raiseCnt = true;
+			}
+			
+			if (raiseCnt)
+				p.arrAllGoods[trgtGoodsId].cnt++;
+			/*
+			세트 숫자 늘리는 코드
+			if (p.arrAllGoods[trgtGoodsId].setName == "set1") {
+				total=p.arrAllGoods[0].cnt;
+				subtotal1 = 0;
+				subtotal2 = 0;
+				for(var i=0; i<p.arrAllGoods.length; i++) {
+					if (p.arrAllGoods[i].setName == "set1") {
+						if (p.arrAllGoods[i].goodsNm == "모짜렐라김치전M (세트 1)" || p.arrAllGoods[i].goodsNm == "체다듬뿍감자전M (세트 1)") {
+							subtotal2 += p.arrAllGoods[i].cnt;
+						}
+						else {
+							subtotal1 += p.arrAllGoods[i].cnt;
+						}
+					} 
+				}
+				if (subtotal1 > total || subtotal2 > total) {
+					p.arrAllGoods[0].cnt++;
+				}
+				console.log(total);
+				console.log(subtotal1);
+				console.log(subtotal2);
+			}
+			*/
+			p.afterProc();
+			//p.afterProcForSubMenu(trgtGoodsId);
+		}
+		
+		this.subminus = function (trgtGoodsId){
+			if(p.arrAllGoods[trgtGoodsId].cnt>0)
+				p.arrAllGoods[trgtGoodsId].cnt--;			
+			p.afterProc();
+		}
+		
+		var orderList = [];
+		this.afterProc = function (){
+			// 최종 금액 표시
+			orderList = [];
+			var goodsTotAmt = 0;
+			for(var i=0; i<p.arrAllGoods.length; i++){
+				$('#input_cnt_'+p.arrAllGoods[i].goodsId).html(p.arrAllGoods[i].cnt);
+				if (p.arrAllGoods[i].cnt>0) {
+					$('#input_name_'+p.arrAllGoods[i].goodsId).css("font-weight", "Bold");
+					$('#input_cnt_'+p.arrAllGoods[i].goodsId).css("font-weight", "Bold");
+				}
+				else {
+					$('#input_name_'+p.arrAllGoods[i].goodsId).css("font-weight", "Normal");
+					$('#input_cnt_'+p.arrAllGoods[i].goodsId).css("font-weight", "Normal");
+				}
+
+				goodsTotAmt += p.arrAllGoods[i].cnt*p.arrAllGoods[i].goodsUnprc;
+				if (p.arrAllGoods[i].cnt > 0) {
+					orderList.push(p.arrAllGoods[i]);
+				}
+			}
+			
+			var innerHtml = "";
+			innerHtml += '<div style="background-color: #F0F0F0; border-bottom: thin solid #BEBEBE">';
+			innerHtml += '<span style="font-weight:bold; font-size:20px">주문 내역</span>';
+			innerHtml += '</div>';
+			innerHtml += '<br>';
+			//innerHtml += '<ul class="columns" data-columns="1" style="padding-left:3; columns:1">';
+			
+			for (var i=0; i<orderList.length; i++){
+				//innerHtml += '<li style="margin-left:3px">';
+				innerHtml += '<div id="div_root">';
+				innerHtml += '<span style="float: left">' + orderList[i].goodsNm + '</span>';
+				innerHtml += '<span style="float: right">' + orderList[i].cnt + '개</span>';
+				innerHtml += '</div>';
+				//innerHtml += '</li>';
+				innerHtml += '<br>';
+			}
+			//innerHtml += '</ul>';
+			innerHtml += '<br>';
+			innerHtml += '<div style="border-top:thin solid #BEBEBE"> </div>';
+			innerHtml += '<span style="font-weight:bold; font-size:20px">주문 금액 </span>';
+			innerHtml += '<span style="font-weight:bold; font-size:20px; float:right">' + goodsTotAmt + '원'+ '</span>';
+			$('#orders').empty().append(innerHtml);
+			
+		}
+		
+		// sheet 에 insert 하는 부분
+		var orderBtn = $('#order-btn');
+		function isLoading(status){
+		  if(status){
+			$('html, body').addClass('wait');
+			orderBtn.attr('disabled', true).html('주문중...');
+		  } else {
+			$('html, body').removeClass('wait');
+			orderBtn.attr('disabled', false).html('주문 및 결제');
+		  }
+		}
+		
+		$('#order-btn').click(function(){
+			isLoading(true);
+			var totalAmount = 0;
+			if (orderList.length == 0) {
+				isLoading(false);
+			} else{
+				for (var i =0; i<orderList.length; i++) {
+					var order = orderList[i];
+					$.ajax({
+						type: "GET",
+						  url: "https://script.google.com/macros/s/AKfycbwYsVW4Ip-N1qnDzrsQggdhiFlBDUav10YB1EcJR8VyxOxVEEiy/exec",
+						data: {
+						  "메뉴": order.goodsNm,
+						  "개수": order.cnt,
+						  "가격": order.goodsUnprc * order.cnt,
+						  "테이블 번호": tableNum,
+						},
+						success: function (response) {
+						  isLoading(false);
+						  console.log(response);
+						  $('#showData').html('');
+						},
+						error: function (request, status, error) {
+						  console.log("error during doGet");
+						  isLoading(false);
+						  console.log("code:" + request.status + "\n" + "error:" + error);
+						  console.log(request.responseText);
+						}
+					});
+					totalAmount += order.cnt * order.goodsUnprc;
+				}
+			}
+			if ($('#extraField').val()) {
+				$.ajax({
+					type: "GET",
+					  url: "https://script.google.com/macros/s/AKfycbwYsVW4Ip-N1qnDzrsQggdhiFlBDUav10YB1EcJR8VyxOxVEEiy/exec",
+					data: {
+					  "메뉴": $('#extraField').val(),
+					  "개수": 0,
+					  "가격": 0,
+					  "테이블 번호": tableNum,
+					},
+					success: function (response) {
+					  isLoading(false);
+					  console.log(response);
+					  $('#showData').html('');
+					},
+					error: function (request, status, error) {
+					  console.log("error during doGet");
+					  isLoading(false);
+					  console.log("code:" + request.status + "\n" + "error:" + error);
+					  console.log(request.responseText);
+					}
+				});
+			}
+			if (orderList.length > 0) {
+				var amountHex = (totalAmount*Math.pow(2, 19)).toString(16);
+				location.href = 'kakaotalk://kakaopay/money/to/qr?qr_code=281006011115259970008807'+amountHex;
+			}
+		});
+		
+	}
+
+
+
+	var goods = new Goods();
+	
+	//jstl로 전체 상품 목록 미리 세팅
+	//세트메뉴 0
+	var id = 0;
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:26000,goodsNm:"세트 1: 프리미엄 막걸리와 치즈전의 만남 (2인)", goodsSubname:"샴페인 막걸리 혹은 프리미엄 막걸리 + 모짜렐라김치전M 혹은 체다듬뿍감자전M", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:26000,goodsNm:"세트 2: 모듬전과 반접시 굴무침 (2-3인)", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:25000,goodsNm:"세트 3:판타스틱4세트 (치즈전 선택1 + 볶음류 선택1) + 꿀토마토와 주먹밥", goodsSubname:"모짜렐라김치전, 체다듬뿍감자전, 불고기치즈파전(매운), 꿀고구마치즈전 중 선택1",
+	                        goodsSubname2:"고추장불고기, 무뼈닭발볶음, 오돌뼈볶음 중 선택1", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:20000,goodsNm:"세트 4: 치떡치떡세트 (치즈전 + 골라먹는떡볶이) (2인)", goodsSubname:"모짜렐라김치전, 체다듬뿍감자전, 불고기치즈파전, 옥수수치즈전, 꿀고구마치즈전 중 선택1", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:15000,goodsNm:"세트 5: 내맘대로세트 두가지 (2인)", goodsSubname:"김치전, 채감자전, 부추전, 두부전, 새송이전, 애호박전, 깻잎전, 동태전, 고추전, 삼색꼬치 중 선택2", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:20000,goodsNm:"세트 6: 내맘대로세트 세가지 (3인)", goodsSubname:"김치전, 채감자전, 부추전, 두부전, 새송이전, 애호박전, 깻잎전, 동태전, 고추전, 삼색꼬치 중 선택3", cnt:0});
+	
+	//겨울메뉴 6
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:16000,goodsNm:"생굴회", goodsSubname:"가게의 모든 굴은 통영수협 57번 중매인님께 산지에서 직접 받아 제공하고 있습니다.", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:16000,goodsNm:"굴전", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:15000,goodsNm:"무채 굴무침", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:25000,goodsNm:"홀닭홀닭 닭도리탕", goodsSubname:"12가지 재료 숙성", cnt:0});
+
+	//대표메뉴 10
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:19000,goodsNm:"모듬전", goodsSubname:"3년간 가장 사랑받은 메뉴", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:15000,goodsNm:"두부와 볶음김치", goodsSubname:"탱글탱글한 슈퍼푸드", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:16000,goodsNm:"고쌈비빔면", goodsSubname:"돈육전과 비빔국수를 한입에 같이 드셔보세요", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:18000,goodsNm:"해물누룽지탕", cnt:0});
+	
+	//기본에 충실한 전요리 14
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:13000,goodsNm:"바삭한 채감자전", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:12000,goodsNm:"김치전", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:12000,goodsNm:"부추전", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:16000,goodsNm:"지글지글 해물파전", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:16000,goodsNm:"큼직큼직 새우전", cnt:0});
+	
+	//치즈덕후를 위한 100%자연치즈 듬뿍 19
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:17000,goodsNm:"모짜렐라김치전", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:17000,goodsNm:"체다듬뿍감자전", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:19000,goodsNm:"불고기치즈파전(매운)", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:17000,goodsNm:"꿀고구마치즈전", cnt:0});
+	
+	//따뜻한 국물요리 23
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:15000,goodsNm:"개운한 어묵전골", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:15000,goodsNm:"얼큰 김치찌개", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:17000,goodsNm:"칼칼한 해물짬뽕탕", cnt:0});
+	
+	//입가심 메뉴 26
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:17000,goodsNm:"쫄깃한 무뼈닭발볶음", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:15000,goodsNm:"오독오독 오돌뼈볶음", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:16000,goodsNm:"고추장불고기", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:19000,goodsNm:"골뱅이무침과 소면", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:17000,goodsNm:"홍어무침(간재미무침)", cnt:0});
+	
+	//추가메뉴 31
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:13000,goodsNm:"골라먹는 떡볶이", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:12000,goodsNm:"옛날소세지", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:12000,goodsNm:"스팸구이와 계란후라이", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:4500,goodsNm:"꿀덮은 토마토", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:5000,goodsNm:"추억의도시락", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:5500,goodsNm:"해물듬뿍라면", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:3000,goodsNm:"주먹밥", cnt:0});
+
+	// 산뜻하고 가벼운 쌀 막걸리, 그리고 동동주 38
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:5000,goodsNm:"1. 선호 (無아스파탐) 750ml 6도", goodsSubname:"경기김포 김포금쌀탁주영농조합", goodsSubname2:"#탄산강함 #단맛없음 #김포금쌀과 날아갈듯한 가벼운 느낌", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:5500,goodsNm:"2. 문경 오미자 750ml 6도", goodsSubname:"경북문경 문경주조", goodsSubname2:"#탄산강함 #단맛없음 #오미자의 상큼함으로 깔끔하게 씻어주는 맛", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:5500,goodsNm:"3. 하얀연꽃 백련 750ml 6도", goodsSubname:"충남당진 신평양조장", goodsSubname2:"#당진 해나루쌀 #연꽃잎이 들어가 부드럽고 깔끔하게 떨어지는 뒷맛", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:5000,goodsNm:"4. 고양 배다리 750ml 7도", goodsSubname:"경기고양 고양탁주합동제조장", goodsSubname2:"#탄산적음 #14년간 청와대 사랑을 받은 술 #남북정상회담시 평양에도 다녀옴", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:5500,goodsNm:"5. 칠곡신동 750ml 6도", goodsSubname:"경북칠곡 칠곡양조장", goodsSubname2:"#달달한 바닐라향과 깔끔한 맛의 오묘한 공존 #1박2일 소개로 유명", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:5000,goodsNm:"6. 동해 지장수 750ml 5도", goodsSubname:"강원동해 낙천탁주제조장", goodsSubname2:"#깔끔한 뒷맛 #풍부한 미네랄로 피부에 좋은 황토암반층의 물 #강원도 지평막걸리", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:5000,goodsNm:"7. 지평 750ml 5도", goodsSubname:"경기양평 지평주조", goodsSubname2:"#요즘 많이 알려졌어요 #맛있는데 흔한 것이 단점", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:5000,goodsNm:"8. 종천 750ml 6도", goodsSubname:"충남서천 종천 주조장", goodsSubname2:"#청량감과 감칠맛이 좋은 술 #골목식당 등장으로 유명세", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:6500,goodsNm:"9. 느린마을 750ml 6도", goodsSubname:"경기포천 배상면주가", goodsSubname2:"#생쌀을 발효시킨 부드러움 #은은하게 감기는 과실향이 매력적", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:5500,goodsNm:"10. 정고집 동동주 750ml 6도", goodsSubname:"전남나주 남도탁주", goodsSubname2:"#전통방식의 동동주 #밥알이 동동 #신선한향과 달짝찌근한 앉은뱅이술", cnt:0});
+	
+	// 자연의 맛을 내려는 사람들의 이야기 無감미료 48
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:7500,goodsNm:"11. 송명섭 900ml 6도", goodsSubname:"전북정읍 태인양조장", goodsSubname2:"#단맛없음 #어머니로부터 이어온 술 빚기로 무형문화재의 반열 #직접농사 #놀라운맛", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:7500,goodsNm:"12. 우렁이블랙라벨 750ml 7.5도", goodsSubname:"충남논산 양촌양조장", goodsSubname2:"#100년간 삼대가 이어온 유일 양조장 #직접농사 #우렁이농법 찹쌀과 맵쌀의 담백함", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:8000,goodsNm:"13. 술헤는밤 750ml 8도", goodsSubname:"강원홍천 두루양조장", goodsSubname2:"#연구원 출신 부부의 오랜 정성으로 #직접농사 #부드러운 질감과 균형이 잘잡힌 술", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:10000,goodsNm:"14. 한강나루 935ml 6도", goodsSubname:"서울특별시 성수 한강주조", goodsSubname2:"#막걸리가 좋아 시작한 청년들의 바램 #서울쌀 #천연 단맛과 깔끔한 산미의 매력왕", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:7000,goodsNm:"15. 걍즐겨 (無아스파탐) 600ml 8도", goodsSubname:"서울특별시 수유 DOK 브루어리", goodsSubname2:"", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:7000,goodsNm:"16. 뉴트로 (無아스파탐) 600ml 8도", goodsSubname:"서울특별시 수유 DOK 브루어리", goodsSubname2:"", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:1000,goodsNm:"17. 기다림25 750ml 8도", goodsSubname:"부산특별시 JK크래프트", goodsSubname2:"#효모가 좋아하는 25도에서 100여일의 기다림 #목넘김뒤 올라오는 풍부한 향이 매력", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:8500,goodsNm:"18. 희양산 막걸리 750ml 9도", goodsSubname:"경북문경 두술도가", goodsSubname2:"#무화학비료와 무농약쌀로 느리게 술을 빚는 #적당한 산미와 베이직한 막걸리", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:8000,goodsNm:"19. 산소순수령 750ml 5.8도", goodsSubname:"전남장성 청산녹수", goodsSubname2:"#단맛있음 #자연 그대로의 순수한 막걸리로의 노력 #과실향 풍미와 크림같은 부드러움", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:8500,goodsNm:"20. 술아 핸드메이드 450ml 9도", goodsSubname:"경기여주 술아원", goodsSubname2:"#새콤달콤꽃향 #여주찹쌀 #술공부가 좋아 시작한 양조 #여성분들 추천", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:11000,goodsNm:"21. 우곡생주 프리미엄 750ml 10도", goodsSubname:"경기화성 배혜정도가", goodsSubname2:"#걸쭉함 #배상면회장이 만든 우곡주를 딸인 배혜정도가에서 완성 #요거트 같은 상큼함", cnt:0});
+	
+	// 고향 자랑 대표막걸리 59
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:5500,goodsNm:"22. 봉평메밀 (강원도) 750ml 6도", goodsSubname:"강원평창 한스팜", goodsSubname2:"#부드러움과 끝에서 느껴지는 메밀의 쌉싸름함 #이효석 #봉평메밀꽃축제", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:5500,goodsNm:"23. 가평잣 햅쌀1872 (경기도) 750ml 6도", goodsSubname:"경기가평 우리술", goodsSubname2:"#가평잣 합량이 두배 #은은한 잣향과 부드러움이 조화 #골프장 막걸리로 유명세", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:5000,goodsNm:"24. 광주퇴촌 토마토 (경기도) 750ml 6도", goodsSubname:"경기광주 대농바이오", goodsSubname2:"#지역특산물 토마토로 만든 #적절한 산미와 토마토맛의 균형감", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:5000,goodsNm:"25. 울릉도호박 (경상도) 750ml 6도", goodsSubname:"경북울릉 울릉우리술", goodsSubname2:"#동쪽끝 청정수로 만든 막걸리 #신비의섬 울릉도", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:6000,goodsNm:"26. 고창 복분자 (전라도) 360ml 6도", goodsSubname:"전북고창 국순당", goodsSubname2:"#1등급 복분자로 복분자 막걸리의 최상급 #막걸리와 와인사이 #남자라면", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:5000,goodsNm:"27. 고흥유자 (전라도) 750ml 6도", goodsSubname:"전남고흥 청정영농조합", goodsSubname2:"#새콤달콤한 유자향과 맛 #순서 상관없이 잘 어울리는 술", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:5000,goodsNm:"28. 전주모주 (전라도) 350ml 1.5도", goodsSubname:"전북전주", goodsSubname2:"#몸에 좋은 약재를 끓여만든 #전주여행 어떠신가요?", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:5000,goodsNm:"29. 한산모시 (충청도) 750ml 5도", goodsSubname:"충남서천 한산주조장", goodsSubname2:"#모시잎의 시원한 끝맛 #신성리 갈대밭 #어디서 들어본거 같은 그 한산모시 맞아요", cnt:0});
+	
+	// 입안에서 톡톡, 샴페인 막걸리 67
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:21000,goodsNm:"30. 복순도가 손 막걸리 935ml 6.5도", goodsSubname:"울산광역시 복순도가", goodsSubname2:"#박복순 할머니께서 빚은 #가볍고 청량감이 풍부 #새콤 #원조샴페인막걸리", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:17000,goodsNm:"31. 스파클링 막걸리 산소 940ml 6.8도", goodsSubname:"전남장성 청산녹수", goodsSubname2:"#無감미료 #자연탄산 그대로의 균형잡힌 맛의 샴페인 막걸리", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:19000,goodsNm:"32. 스트로우베리 스파클링 막걸리 940ml 6.8도", goodsSubname:"전남장성 청산녹수", goodsSubname2:"#無아스파탐 #딸기품종 설향으로 만든 달콤한 샴페인 막걸리 #데이트중이시라면", cnt:0});
+	
+	// 지극정성 프리미엄 수제 탁주 70
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:19000,goodsNm:"33. 해창9도 900ml 9도", goodsSubname:"전남해남 해창주조", goodsSubname2:"#대중버전보다 숙성시간이 길어 단맛이 강하고 목넘김이 부드러움 #양조장 특유의 두터운 입자감은 옛날 귀한 손님께 내놓던 가양주의 느낌", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:19000,goodsNm:"34. 세종대왕 어주 500ml 13도", goodsSubname:"충북처원 장희도가", goodsSubname2:"#세종대왕 제위시절 쓰여진 벽향주 주방문을 이용해 재현한 술 #90일 이상의 숙성 #몽글몽글한 자연적인 단맛이 도는 고급 탁주", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:19000,goodsNm:"35. 삼해탁주 500ml 13도", goodsSubname:"서울특별시 삼해소주가", goodsSubname2:"#조선시대 양반술인 삼해주의 탁주버전 #오직 쌀과 누룩으로만 빚음 #조금 부드럽고 산미가 적당하여 시금털털 막걸리의 고급버전", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:19000,goodsNm:"36. 이상헌탁주 500ml 14도", goodsSubname:"충남아산 이가수불", goodsSubname2:"#드라이한 맛과 부드러운 목넘김이 조화로운 술 #단맛을 선호하지 않으며 색다른 술을 찾는 분께 추천 #목 넘김 후 올라오는 술의 맡기", cnt:0});
+	
+	//맑은 목넘김의 막걸리 74
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:6000,goodsNm:"37. 대대포 750ml 6도", goodsSubname:"전남담양 죽향도가", goodsSubname2:"#담양쌀 #천연벌꿀이 함유 #뒷향이 좋은 막걸리 #대나무", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:6000,goodsNm:"38. 봉하마을 쌀 750ml 6도", goodsSubname:"전남담양 죽형도가", goodsSubname2:"#김해무농약쌀 #노부현재단에서 운영 #대대포 막걸리와 비교", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:6000,goodsNm:"39. 호랑이 750ml 6도", goodsSubname:"경기화성 배혜정도가", goodsSubname2:"#생쌀을 발효시켜 부드러운 입자를 느낄 수 있고 달달함의 조화", cnt:0});
+	
+	// 걸쭉하고 진한 옛막걸리 77
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:5000,goodsNm:"40. 덕산 750ml 6도", goodsSubname:"충북진천 덕산양조장", goodsSubname2:"#허영만 식객소개 #두툼한 질감과 약한 탄산감 #기본적인 밀막걸리의 표본", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:5000,goodsNm:"41. 대강소백산 750ml 6도", goodsSubname:"충북단양 대강양조장", goodsSubname2:"#항아리 숙성의 묵직함과 구수한 맛 #노무현대통령 청와대 만찬주", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:5500,goodsNm:"42. 여수개도 750ml 6도", goodsSubname:"전남여수 개도주조장", goodsSubname2:"#개도라는 섬의 작은양조장 #달짝새콤 #살살넘어가는 목넘김 #이연복쉐프 추천", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:6000,goodsNm:"43. 금정산성 750ml 8도", goodsSubname:"부산광역시 금정산성토산주", goodsSubname2:"#부산전통누륵마을 #새콤시큼달콤한 복잡한 맛 #그것이 매력", cnt:0});
+	
+	// 단게 땡긴다 달달하게 - 술자리가 무르익을 때 81
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:5500,goodsNm:"44. 옥수수 750ml 6도", goodsSubname:"경기화성 배혜정도가", goodsSubname2:"#탄산감이 느껴져 뒷맛을 깔끔하게 잡아줌 #맑은 동동주느낌과 고소한 옥수수향", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:5500,goodsNm:"45. 누룽지 650ml 6도", goodsSubname:"충남부여 백제원", goodsSubname2:"#달콤한 누룽지 사탕 같은 막걸리 #구수한 누룽지향을 느낄 수 있는 술", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:5500,goodsNm:"46. 오가닉 벌꿀 650ml 6도", goodsSubname:"서울특별시 관악구", goodsSubname2:"#유기농 벌꿀을 타서 꿀떡꿀떡", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:6500,goodsNm:"47. 우도땅콩 750ml 6도", goodsSubname:"제주특별시 조은술 세종", goodsSubname2:"#최상급 우도땅콩의 고소한맛이 입안에 가득", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:5500,goodsNm:"48. 검은콩 750ml 6도", goodsSubname:"충북단양 대강양조장", goodsSubname2:"#항아리 숙성시 슈퍼푸드 검은콩을 함께발표 #달달함과 고소함", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:5000,goodsNm:"49. 부여알밤 750ml 6도", goodsSubname:"충남부여 사곡양조원", goodsSubname2:"#부여알밤은 가볍고 향이 좋음", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:5000,goodsNm:"50. 공주알밤 750ml 6도", goodsSubname:"공주백제원 사곡양조원", goodsSubname2:"#공주알밤은 진하고 단맛이 더 강함", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:6000,goodsNm:"51. 제주감귤 750ml 6도", goodsSubname:"제주특별시 조은술 세종", goodsSubname2:"#무리하지않은 감귤향 #적당한 산미 #제주에서만 판매되는 술을 맛볼 기회", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:6000,goodsNm:"52. 바나나 950ml 4도", goodsSubname:"전북부안 동진주조", goodsSubname2:"#부드러운 단맛과 바나나맛의 밸런스가 좋음", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:6000,goodsNm:"53. 메로니아 750ml 6도", goodsSubname:"경기화성 배혜정도가", goodsSubname2:"#메로나 맛 기억하시나요? 메론맛으로 달달하게 드실 수 있는 막걸리", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:5000,goodsNm:"54. 복숭아 750ml 3도", goodsSubname:"강원횡성 국순당", goodsSubname2:"#단맛이 강하고 복숭아 음료 같은 술 #술보단 가볍게 드실 때 추천", cnt:0});
+	
+	//한국 과실주 92
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:6500,goodsNm:"55-1. 심술 330ml 7도", goodsSubname:"경기포천 배상면주가", goodsSubname2:"#SNS대세의 술, 가볍고 은은한 향으로 분위기 업", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:6500,goodsNm:"55-2. 심술 330ml 12도", goodsSubname:"경기포천 배상면주가", goodsSubname2:"#SNS대세의 술, 가볍고 은은한 향으로 분위기 업", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:7000,goodsNm:"56. 매실원주 375ml 13도", goodsSubname:"서울특별시 더한", goodsSubname2:"#매실을 발효한 국내 하나뿐인 술 #제주꿀도 함께 첨가되어 만족도 높은 술", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:6000,goodsNm:"57. APPLE CIDER/샹그리아포도 330ml 3.5도", goodsSubname:"경북의성 애플리즈", goodsSubname2:"#CIDER 발포주 #도수가 높지 않아 술보단 술자리를 즐기시는분 추천", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:7000,goodsNm:"58. 황진이주 375ml 12도", goodsSubname:"전북남원 술소리", goodsSubname2:"#지리산 지역 특산주 #신맛과 단맛이 조화", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:16000,goodsNm:"59. 고흥유자주 500ml 8도", goodsSubname:"전남고흥 녹동양조장", goodsSubname2:"#향긋한 맛과 향 모두 뛰어난 세련된 술 #후회하지 않을 술 #강력추천", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:10000,goodsNm:"60. 제주니모메 375ml 11도", goodsSubname:"제주특별시 제주샘", goodsSubname2:"#너의집앞에라는 제주도 방언 #감귤향으로 시트러스향이 코 끝에 멤도는 술", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:12000,goodsNm:"61. 명작 복분자 375ml 13도", goodsSubname:"전북고창 국순당", goodsSubname2:"#국내 복분자주 중 최상의 복분자 #가장 많은 판매량 #국순당의 자존심", cnt:0});
+	                                
+	// 한국 맑은 술 100               
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:8000,goodsNm:"62. 경주법주 원컵 (따뜻한 술) 400ml 13도", goodsSubname:"경북경주 경주법주", goodsSubname2:"#몸을 따뜻하게 녹일 수 있는 맑은 술", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:6500,goodsNm:"63. 화랑 375ml 13도", goodsSubname:"경북경주 경주법주", goodsSubname2:"#국내산 찹쌀로 만들어 입안에 단맛이 들고 #일본술 대신 고급진 맛의 화랑으로", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:13000,goodsNm:"64. 우희열 명인 한산소곡주 360ml 18도", goodsSubname:"충남서천 한산소곡주", goodsSubname2:"#중국 마오타이 마음에 버금가는 한산소곡주 마을이 있다 #달짝찌근한 찐한 맛", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:6500,goodsNm:"65. 감자술 300ml 13도", goodsSubname:"가원평창 오대서주양조", goodsSubname2:"#옛 강원도 화전민의 삶이 담겨있는 술 #은은한 풍미의 감자향 #감자전 추천", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:6000,goodsNm:"66. 강쇠주 375ml 13도", goodsSubname:"전북남원 참본", goodsSubname2:"#힘이 벌떡 솟을 것 같은 #아시는분만 찾아먹는 술 #향미가 좋음", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:6000,goodsNm:"67. 백하 330ml 12도", goodsSubname:"경기포천 배상면주가", goodsSubname2:"#약간 달달한 약주향과 고소한 풍미 #청하와 비교추천", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:6000,goodsNm:"68. 동학1957청주 375ml 13도", goodsSubname:"충북충주 고헌정영농조합", goodsSubname2:"#영하4도이하의 냉동여과방식으로 풍미가 살아 있음 #가볍게 드실 수 있는 청주", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:11000,goodsNm:"69. 제주오메기술 375ml 13도", goodsSubname:"제주특별시 술샘", goodsSubname2:"#제주도 오메기떡으로 만든 술 #제주술 특유의 입안에서 튕기듯 풍기는 향이 매력", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:29000,goodsNm:"70. 홍삼명주 500ml 13도", goodsSubname:"충북괴산 홍삼명주양조원", goodsSubname2:"#세계최초의 홍삼 발효주 #4년근 홍삼과 1년 이상 숙성한 진한맛이 일품", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:11000,goodsNm:"71. 조선주조사 700ml 13도", goodsSubname:"", goodsSubname2:"#맑은느낌의 시원하고 담백한 술 #맑은술을 처음 드시는 분들도 부담없음 #가성비왕", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:15000,goodsNm:"72. 감사블루 375ml 13도", goodsSubname:"경기용인 술샘", goodsSubname2:"#깔끔한 쌀향과 입안에서 툭치고 올라오는 고소함", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:80000,goodsNm:"73. 경주법주 초특선 700ml 16도", goodsSubname:"경북경주 경주법주", goodsSubname2:"#한국의 준마이 다이긴조 #신라시대 청주 방식 재현 #부드러움과 풍미가 매우 풍부", cnt:0});
+	
+	//한국증류소주 112
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:75000,goodsNm:"74-1. 명인박재서 안동소주22 360ml 22도", goodsSubname:"경북안동 안동소주", goodsSubname2:"#고려시대 원나라 병참기지 부터 이어져 #누룩냄새가 제거되어 부드러운 목넘김", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:13000,goodsNm:"74-2. 명인박재서 안동소주35 360ml 35도", goodsSubname:"경북안동 안동소주", goodsSubname2:"#고려시대 원나라 병참기지 부터 이어져 #누룩냄새가 제거되어 부드러운 목넘김", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:16000,goodsNm:"75. 국화주 안동소주42 375ml 42도", goodsSubname:"경북안동 회곡양조장", goodsSubname2:"#국화와 함께 발효한 술로 국화의 향과 고도수 특유의 증류향의 조화가 일품", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:19000,goodsNm:"76-1. 화요25 375ml 25도", goodsSubname:"경기여주 화요", goodsSubname2:"#입안의 감기는 듯한 안정감 #향긋한 향이 입안에 퍼질 때의 묘한 느낌", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:39000,goodsNm:"76-2. 화요41 375ml 41도", goodsSubname:"경기여주 화요", goodsSubname2:"#입안의 감기는 듯한 안정감 #향긋한 향이 입안에 퍼질 때의 묘한 느낌", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:11000,goodsNm:"77. 겨울소주25 360ml 25도", goodsSubname:"충남청양 아리랑주조", goodsSubname2:"#25도 증류주로 완성도 높은 술 #머금고 있을 때 느껴지는 바디감이 매력적", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:11000,goodsNm:"78. 한주소주35 360ml 35도", goodsSubname:"충북옥천 한주양조", goodsSubname2:"#한국의 보드카 같은 깔끔함 #군더더기 없는 목넘김 #면세점 판매량 높은 술", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:16000,goodsNm:"79. 서울의밤25 375ml 25도", goodsSubname:"서울특별시 더한", goodsSubname2:"#매실을 증류한 술 #산미가 살짝 도는 것이 매력", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:11000,goodsNm:"80-1. 문배술23 375ml 23도", goodsSubname:"경기김포 문배주양조원", goodsSubname2:"#문배나무의 향이 난다는 #남북정상회담 만찬주 #많이 알려져있는 술", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:18000,goodsNm:"80-2. 문배술40 200ml 40도", goodsSubname:"경기김포 문배주양조원", goodsSubname2:"#문배나무의 향이 난다는 #남북정상회담 만찬주 #많이 알려져있는 술", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:25000,goodsNm:"81. 제주고소리술40 375ml 40도", goodsSubname:"제주특별시 제주샘", goodsSubname2:"#오메기떡 -> 오메기술 -> 고소리술 #제술주 특유의 입안에서 타탁 튀는듯한 느낌", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:29000,goodsNm:"82. 문경바람 오크40 375ml 40도", goodsSubname:"경북문경 제이엘", goodsSubname2:"#사과와인 증류주 #한국 최초 위스키 마스터 블랜더 #오크향과 사과향의 미묘함", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:11000,goodsNm:"83. 두레앙22 375ml 22도", goodsSubname:"충남천안 두레양조", goodsSubname2:"#거봉포도 증류주 #국내 유일 브랜디 원료 생산 #포도의 향미와 산미가 매력적", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:14000,goodsNm:"84. 술샘16 375ml 16도", goodsSubname:"경기용인 술샘", goodsSubname2:"#오미자 리큐르 #언뜻 증류주인가 싶을 정도의 부재료와의 조화로운 술", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:13000,goodsNm:"85. 사과소주 아락25 375ml 25도", goodsSubname:"경기포천 배상면주가", goodsSubname2:"#사과향이 은은하게 풍기는 소주 #편하게 드실 수 있는 술", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:33000,goodsNm:"86. 메밀로25 500ml 25도", goodsSubname:"강원홍천 두루양조자", goodsSubname2:"#강원도 홍천의 떼루아가 조화를 이룬 술 #다채로운 향과 더불어 잔향이 남음", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:9900,goodsNm:"87-1. 황금보리소주17 375ml 17도", goodsSubname:"충남홍성 황금보리소주", goodsSubname2:"#보리 100% 발효한 술 #색다른 소주의 풍미 #맥주와 섞어 드실 때 또 다른 매력", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:29000,goodsNm:"87-2. 황금보리소주40 375ml 40도", goodsSubname:"충남홍성 황금보리소주", goodsSubname2:"#보리 100% 발효한 술 #색다른 소주의 풍미 #맥주와 섞어 드실 때 또 다른 매력", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:29000,goodsNm:"88. 고구마소주 필25 375ml 25도", goodsSubname:"경기용인 술아원", goodsSubname2:"#여주고구마로 고구마소주의 높은 완성도 #일본술과 비교하는 재미", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:20000,goodsNm:"89. 진도홍주40 375ml 40도", goodsSubname:"전남진도 진도대대로영농조합", goodsSubname2:"#붉은빛의 유일한 술 #부드러운 쌀과 누룩의 향미", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:34000,goodsNm:"90. 미르40 375ml 40도", goodsSubname:"", goodsSubname2:"#2018 우리술 품평회 대통령상 #입안에 누룽지향 같은 구수한 맛이 특징", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:29000,goodsNm:"91. 담솔40 375ml 40도", goodsSubname:"경남함양 명가원", goodsSubname2:"#솔잎을 넣은 솔송주를 증류한 술 #입안을 씻어내는 듯한 깔끔함과 후미의 솔향", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:59000,goodsNm:"92. 한산불소곡주43 700ml 43도", goodsSubname:"충남서천 한산소곡주", goodsSubname2:"#한산소곡주를 증류한 술 #소곡주 특유의 곡물의 담백함이 전해짐", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:46000,goodsNm:"93-1. 삼해소주45 250ml 45도", goodsSubname:"서울특별시 삼해소주가", goodsSubname2:"#조선시대 양반술 #입안에 닿을 때 없어질듯한 부드러움과 감기는 맛이 일품", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:88000,goodsNm:"93-2. 삼해소주45 400ml 45도", goodsSubname:"서울특별시 삼해소주가", goodsSubname2:"#조선시대 양반술 #입안에 닿을 때 없어질듯한 부드러움과 감기는 맛이 일품", cnt:0});
+	                                
+	//조선시대 3대명주 특집 137           
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:64000,goodsNm:"94. 감흥로40 400ml 40도", goodsSubname:"경기파주 감홍로", goodsSubname2:"#맛이 달고 붉은 빛의 이슬 같은 의미로 평안도 지역의 기생과 양반들이 인정한 술로 전해짐 #첫 모금에 살짝 감도는 단맛과 다양한 향이 입안에 퍼지는 술 #이기숙명인", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:110000,goodsNm:"95. 죽력고32 700ml 32도", goodsSubname:"전북정읍 태인양조장", goodsSubname2:"#대나무에 불을지펴 흘러내리는 대나무 즙으로 발효한 술 #송명섭명인의 무형문화재 #청량감 있는 첫맛과 진한 알코올향과 대나무 향이 복합적으로 어울어 지는 술", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:140000,goodsNm:"96. 명작 이강주38 (이강고) 700ml 38도", goodsSubname:"전북전주 전주이강주", goodsSubname2:"#전라도와 황해도에서 빚어온 전통 민속주로 조선시대 상류사회에서 즐겨마시던 소주 #배나무와 생강이 들어가 깔끔하고 정제된맛 #조정형명인", cnt:0});
+	                                
+	//한국 와인 140                 
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:29000,goodsNm:"97. 우아미 화이트와인 500ml 11도", goodsSubname:"경북영천 우아미와이너리", goodsSubname2:"#샤르도네세미뇽70", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:29000,goodsNm:"98. GODORI 복숭아와인 375ml 6.5도", goodsSubname:"경북영천 고도리와이너리", goodsSubname2:"#진하게 잘익은 복숭아 향긋한 내음과 달달함이 좋은 와인", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:35000,goodsNm:"99. 소백산산향기 750ml 12도", goodsSubname:"경상북도 영주 산내들와인", goodsSubname2:"#드라이와인", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:55000,goodsNm:"100. 오미로제 750ml 12도", goodsSubname:"경북문경 제이엘", goodsSubname2:"#로제와인", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,goodsUnprc:99000,goodsNm:"101. 그랑고또 청수 750ml 12도", goodsSubname:"경기안산 대부도 그린영농조합", goodsSubname2:"#화이트와인 #2019 우리술 품평회 대상", cnt:0});
+                                    
+	//세트 메뉴                        
+	//프리미엄 막걸리와 치즈전의 만남: 145     
+	goods.arrAllGoods.push({goodsId:id++,setName:"set1",goodsUnprc:0,goodsNm:"30. 복순도가 손 막걸리 935ml 6.5도 (세트 1)", goodsNmForSub:"30. 복순도가 손 막걸리 935ml 6.5도", goodsSubname:"울산광역시 복순도가", goodsSubname2:"#박복순 할머니께서 빚은 #가볍고 청량감이 풍부 #새콤 #원조샴페인막걸리", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,setName:"set1",goodsUnprc:0,goodsNm:"31. 스파클링 막걸리 산소 940ml 6.8도 (세트 1)", goodsNmForSub:"31. 스파클링 막걸리 산소 940ml 6.8도", goodsSubname:"전남장성 청산녹수", goodsSubname2:"#無감미료 #자연탄산 그대로의 균형잡힌 맛의 샴페인 막걸리", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,setName:"set1",goodsUnprc:0,goodsNm:"32. 스트로우베리 스파클링 막걸리 940ml 6.8도 (세트 1)", goodsNmForSub:"32. 스트로우베리 스파클링 막걸리 940ml 6.8도", goodsSubname:"전남장성 청산녹수", goodsSubname2:"#無아스파탐 #딸기품종 설향으로 만든 달콤한 샴페인 막걸리 #데이트중이시라면", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,setName:"set1",goodsUnprc:0,goodsNm:"33. 해창9도 900ml 9도 (세트 1)",goodsNmForSub:"33. 해창9도 900ml 9도", goodsSubname:"전남해남 해창주조", goodsSubname2:"#대중버전보다 숙성시간이 길어 단맛이 강하고 목넘김이 부드러움 #양조장 특유의 두터운 입자감은 옛날 귀한 손님께 내놓던 가양주의 느낌", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,setName:"set1",goodsUnprc:0,goodsNm:"34. 세종대왕 어주 500ml 13도 (세트 1)",goodsNmForSub:"34. 세종대왕 어주 500ml 13도", goodsSubname:"충북처원 장희도가", goodsSubname2:"#세종대왕 제위시절 쓰여진 벽향주 주방문을 이용해 재현한 술 #90일 이상의 숙성 #몽글몽글한 자연적인 단맛이 도는 고급 탁주", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,setName:"set1",goodsUnprc:0,goodsNm:"35. 삼해탁주 500ml 13도 (세트 1)",goodsNmForSub:"35. 삼해탁주 500ml 13도", goodsSubname:"서울특별시 삼해소주가", goodsSubname2:"#조선시대 양반술인 삼해주의 탁주버전 #오직 쌀과 누룩으로만 빚음 #조금 부드럽고 산미가 적당하여 시금털털 막걸리의 고급버전", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,setName:"set1",goodsUnprc:0,goodsNm:"36. 이상헌탁주 500ml 14도 (세트 1)",goodsNmForSub:"36. 이상헌탁주 500ml 14도", goodsSubname:"충남아산 이가수불", goodsSubname2:"#드라이한 맛과 부드러운 목넘김이 조화로운 술 #단맛을 선호하지 않으며 색다른 술을 찾는 분께 추천 #목 넘김 후 올라오는 술의 맡기", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,setName:"set1",goodsUnprc:0,goodsNm:"모짜렐라김치전M (세트 1)",goodsNmForSub:"모짜렐라김치전M", goodsSubname:"&nbsp", goodsSubname2:"&nbsp", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,setName:"set1",goodsUnprc:0,goodsNm:"체다듬뿍감자전M (세트 1)",goodsNmForSub:"체다듬뿍감자전M", goodsSubname:"&nbsp", goodsSubname2:"&nbsp", cnt:0});
+	//판타스틱4세트 154                 
+	goods.arrAllGoods.push({goodsId:id++,setName:"set3",goodsUnprc:0,goodsNm:"모짜렐라김치전 (세트 3)",goodsNmForSub:"모짜렐라김치전", goodsSubname:"&nbsp", goodsSubname2:"&nbsp", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,setName:"set3",goodsUnprc:0,goodsNm:"체다듬뿍감자전 (세트 3)",goodsNmForSub:"체다듬뿍감자전", goodsSubname:"&nbsp", goodsSubname2:"&nbsp", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,setName:"set3",goodsUnprc:0,goodsNm:"불고기치즈파전(매운) (세트 3)",goodsNmForSub:"불고기치즈파전(매운)", goodsSubname:"&nbsp", goodsSubname2:"&nbsp", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,setName:"set3",goodsUnprc:0,goodsNm:"꿀고구마치즈전 (세트 3)",goodsNmForSub:"꿀고구마치즈전", goodsSubname:"&nbsp", goodsSubname2:"&nbsp", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,setName:"set3",goodsUnprc:0,goodsNm:"쫄깃한 무뼈닭발볶음 (세트 3)",goodsNmForSub:"쫄깃한 무뼈닭발볶음", goodsSubname:"&nbsp", goodsSubname2:"&nbsp", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,setName:"set3",goodsUnprc:0,goodsNm:"오독오독 오돌뼈볶음 (세트 3)",goodsNmForSub:"오독오독 오돌뼈볶음", goodsSubname:"&nbsp", goodsSubname2:"&nbsp", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,setName:"set3",goodsUnprc:0,goodsNm:"고추장불고기 (세트 3)",goodsNmForSub:"고추장불고기", goodsSubname:"&nbsp", goodsSubname2:"&nbsp", cnt:0});
+	//치떡치떡세트 161                 
+	goods.arrAllGoods.push({goodsId:id++,setName:"set4",goodsUnprc:0,goodsNm:"모짜렐라김치전 (세트 4)",goodsNmForSub:"모짜렐라김치전", goodsSubname:"&nbsp", goodsSubname2:"&nbsp", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,setName:"set4",goodsUnprc:0,goodsNm:"체다듬뿍감자전 (세트 4)",goodsNmForSub:"체다듬뿍감자전", goodsSubname:"&nbsp", goodsSubname2:"&nbsp", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,setName:"set4",goodsUnprc:0,goodsNm:"불고기치즈파전(매운) (세트 4)",goodsNmForSub:"불고기치즈파전(매운)", goodsSubname:"&nbsp", goodsSubname2:"&nbsp", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,setName:"set4",goodsUnprc:0,goodsNm:"옥수수치즈전 (세트 4)",goodsNmForSub:"옥수수치즈전", goodsSubname:"&nbsp", goodsSubname2:"&nbsp", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,setName:"set4",goodsUnprc:0,goodsNm:"꿀고구마치즈전 (세트 4)",goodsNmForSub:"꿀고구마치즈전", goodsSubname:"&nbsp", goodsSubname2:"&nbsp", cnt:0});
+	//내맘대로세트2 166        
+	goods.arrAllGoods.push({goodsId:id++,setName:"set5",goodsUnprc:0,goodsNm:"김치전 (세트 5)",goodsNmForSub:"김치전", goodsSubname:"&nbsp", goodsSubname2:"&nbsp", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,setName:"set5",goodsUnprc:0,goodsNm:"채감자전 (세트 5)",goodsNmForSub:"채감자전", goodsSubname:"&nbsp", goodsSubname2:"&nbsp", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,setName:"set5",goodsUnprc:0,goodsNm:"부추전 (세트 5)",goodsNmForSub:"부추전", goodsSubname:"&nbsp", goodsSubname2:"&nbsp", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,setName:"set5",goodsUnprc:0,goodsNm:"두부전 (세트 5)",goodsNmForSub:"두부전", goodsSubname:"&nbsp", goodsSubname2:"&nbsp", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,setName:"set5",goodsUnprc:0,goodsNm:"새송이전 (세트 5)",goodsNmForSub:"새송이전", goodsSubname:"&nbsp", goodsSubname2:"&nbsp", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,setName:"set5",goodsUnprc:0,goodsNm:"애호박전 (세트 5)",goodsNmForSub:"애호박전", goodsSubname:"&nbsp", goodsSubname2:"&nbsp", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,setName:"set5",goodsUnprc:0,goodsNm:"깻잎전 (세트 5)",goodsNmForSub:"깻잎전", goodsSubname:"&nbsp", goodsSubname2:"&nbsp", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,setName:"set5",goodsUnprc:0,goodsNm:"동태전 (세트 5)",goodsNmForSub:"동태전", goodsSubname:"&nbsp", goodsSubname2:"&nbsp", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,setName:"set5",goodsUnprc:0,goodsNm:"고추전 (세트 5)",goodsNmForSub:"고추전", goodsSubname:"&nbsp", goodsSubname2:"&nbsp", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,setName:"set5",goodsUnprc:0,goodsNm:"삼색꼬치 (세트 5)",goodsNmForSub:"삼색꼬치", goodsSubname:"&nbsp", goodsSubname2:"&nbsp", cnt:0});
+	//내맘대로세트3 176           
+	goods.arrAllGoods.push({goodsId:id++,setName:"set6",goodsUnprc:0,goodsNm:"김치전 (세트 6)",goodsNmForSub:"김치전", goodsSubname:"&nbsp", goodsSubname2:"&nbsp", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,setName:"set6",goodsUnprc:0,goodsNm:"채감자전 (세트 6)",goodsNmForSub:"채감자전", goodsSubname:"&nbsp", goodsSubname2:"&nbsp", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,setName:"set6",goodsUnprc:0,goodsNm:"부추전 (세트 6)",goodsNmForSub:"부추전", goodsSubname:"&nbsp", goodsSubname2:"&nbsp", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,setName:"set6",goodsUnprc:0,goodsNm:"두부전 (세트 6)",goodsNmForSub:"두부전", goodsSubname:"&nbsp", goodsSubname2:"&nbsp", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,setName:"set6",goodsUnprc:0,goodsNm:"새송이전 (세트 6)",goodsNmForSub:"새송이전", goodsSubname:"&nbsp", goodsSubname2:"&nbsp", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,setName:"set6",goodsUnprc:0,goodsNm:"애호박전 (세트 6)",goodsNmForSub:"애호박전", goodsSubname:"&nbsp", goodsSubname2:"&nbsp", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,setName:"set6",goodsUnprc:0,goodsNm:"깻잎전 (세트 6)",goodsNmForSub:"깻잎전", goodsSubname:"&nbsp", goodsSubname2:"&nbsp", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,setName:"set6",goodsUnprc:0,goodsNm:"동태전 (세트 6)",goodsNmForSub:"동태전", goodsSubname:"&nbsp", goodsSubname2:"&nbsp", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,setName:"set6",goodsUnprc:0,goodsNm:"고추전 (세트 6)",goodsNmForSub:"고추전 (세트 6)", goodsSubname:"&nbsp", goodsSubname2:"&nbsp", cnt:0});
+	goods.arrAllGoods.push({goodsId:id++,setName:"set6",goodsUnprc:0,goodsNm:"삼색꼬치 (세트 6)",goodsNmForSub:"삼색꼬치", goodsSubname:"&nbsp", goodsSubname2:"&nbsp", cnt:0});
+
+	goods.afterProc();
+	//goods.drawGoods(goods.arrAllGoods);
+
+</script>
+
+</html>
